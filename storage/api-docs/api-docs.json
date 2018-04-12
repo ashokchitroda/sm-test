@@ -1,0 +1,209 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "SMIT test with laravel 5.5",
+        "license": {
+            "name": "MIT"
+        },
+        "version": "1.0.0"
+    },
+    "host": "localhost/test/test/public/api",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/x-www-form-urlencoded"
+    ],
+    "produces": [
+        "application/x-www-form-urlencoded"
+    ],
+    "paths": {
+        "/add_address": {
+            "post": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Address.",
+                "description": "Add address to database.",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "A valid name.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "A valid email.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "mobile",
+                        "in": "formData",
+                        "description": "A valid mobile number.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/Error422"
+                        }
+                    }
+                }
+            }
+        },
+        "/is_english": {
+            "post": {
+                "tags": [
+                    "Langauge"
+                ],
+                "summary": "Langauge.",
+                "description": "Check text is english laguage or not.",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "text",
+                        "in": "formData",
+                        "description": "A valid text.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/scrape": {
+            "post": {
+                "tags": [
+                    "Scrape Request"
+                ],
+                "summary": "Scrape request.",
+                "description": "Scrape request to get links.",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "page_link",
+                        "in": "formData",
+                        "description": "A valid web page link.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {}
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Error404": {
+            "properties": {
+                "error": {
+                    "properties": {
+                        "code": {
+                            "type": "integer",
+                            "default": "404"
+                        },
+                        "message": {
+                            "type": "string",
+                            "example": "Resource Not Found"
+                        }
+                    },
+                    "type": "object"
+                }
+            }
+        },
+        "Error403": {
+            "properties": {
+                "error": {
+                    "properties": {
+                        "code": {
+                            "type": "integer",
+                            "default": "403"
+                        },
+                        "message": {
+                            "type": "string",
+                            "example": "Access Denied"
+                        }
+                    },
+                    "type": "object"
+                }
+            }
+        },
+        "Error401": {
+            "properties": {
+                "error": {
+                    "properties": {
+                        "code": {
+                            "type": "integer",
+                            "default": "403"
+                        },
+                        "message": {
+                            "type": "string",
+                            "example": "Unauthorized User"
+                        }
+                    },
+                    "type": "object"
+                }
+            }
+        },
+        "Error422": {
+            "type": "object"
+        },
+        "Error500": {
+            "properties": {
+                "error": {
+                    "properties": {
+                        "code": {
+                            "type": "integer",
+                            "default": "500"
+                        },
+                        "message": {
+                            "type": "string",
+                            "example": "Internal Server Error"
+                        }
+                    },
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
